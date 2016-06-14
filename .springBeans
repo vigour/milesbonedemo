@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.7.3.201602250914-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/resources/config/spring/spring-core.xml</config>
+		<config>src/main/resources/config/spring/spring-datasource.xml</config>
+		<config>src/main/resources/config/spring/spring-mybatis.xml</config>
+		<config>src/main/resources/config/spring/spring.xml</config>
+		<config>src/main/resources/config/spring/spring-service.xml</config>
+		<config>src/main/resources/config/spring/spring-aop.xml</config>
+		<config>src/main/resources/config/spring/spring-mvc.xml</config>
+		<config>src/main/resources/config/spring/spring-resources.xml</config>
+		<config>src/main/resources/config/spring/spring-listener.xml</config>
+		<config>src/main/resources/config/spring/spring-security.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[web-context]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/config/spring/spring-core.xml</config>
+				<config>src/main/resources/config/spring/spring-datasource.xml</config>
+				<config>src/main/resources/config/spring/spring-mybatis.xml</config>
+				<config>src/main/resources/config/spring/spring-service.xml</config>
+				<config>src/main/resources/config/spring/spring-aop.xml</config>
+				<config>src/main/resources/config/spring/spring-mvc.xml</config>
+				<config>src/main/resources/config/spring/spring-resources.xml</config>
+				<config>src/main/resources/config/spring/spring-listener.xml</config>
+				<config>src/main/resources/config/spring/spring-security.xml</config>
+			</configs>
+			<profiles>
+			</profiles>
+		</configSet>
+	</configSets>
+</beansProjectDescription>
