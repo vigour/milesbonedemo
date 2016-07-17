@@ -24,14 +24,14 @@
 
 		<!-- enable remember me -->
 		<security:remember-me token-validity-seconds="1209600" 
-			remember-me-parameter="remember-me"  data-source-ref="dataSource" />
+			remember-me-parameter="remember-me"   data-source-ref="dataSource" />
 		
 		<security:logout invalidate-session="true" delete-cookies="JSESSIONID" logout-url="/j_spring_security_logout" logout-success-url="/login?logout=1" />
 	</security:http>
 
 	<bean id="tokenRepository"
 		class="org.springframework.security.web.csrf.CookieCsrfTokenRepository" />
-
+	
 	<security:authentication-manager erase-credentials="false">
 		<security:authentication-provider>
 <!-- 			<security:password-encoder hash="md5"/> -->

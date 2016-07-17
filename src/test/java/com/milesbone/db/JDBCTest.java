@@ -20,7 +20,6 @@ public class JDBCTest extends TestCase{
 	@Test
 	public void testJdbc () throws  Exception{
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-        
         String url="jdbc:mysql://localhost:3306/mydrp?useUnicode=true&characterEncoding=UTF-8"; 
         String user="logistics"; 
         String password="logistics"; 
@@ -28,7 +27,7 @@ public class JDBCTest extends TestCase{
         Connection conn= DriverManager.getConnection(url,user,password);
         System.out.println("Done!OK!!! ");
         
-        PreparedStatement   ps=conn.prepareStatement( "select   * from   user_t "); 
+        PreparedStatement   ps=conn.prepareStatement( "select * from   users "); 
         ResultSet   rs=ps.executeQuery(); 
         while   (rs.next())
         { 

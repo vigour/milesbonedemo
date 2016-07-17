@@ -6,8 +6,8 @@
       <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
     </layout>
   </appender>
-  
-  <logger name="com.milesbone" level="TRACE"/>
+  <logger name="org.apache" level="INFO"/>
+  <logger name="com.milesbone" level="INFO"/>
   
 
   <root level="debug">
