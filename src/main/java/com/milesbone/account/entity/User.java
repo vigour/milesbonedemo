@@ -11,7 +11,28 @@ public class User {
 
     private Double userSalary;
 
-    public String getUserId() {
+    public User() {
+		super();
+	}
+
+    
+	public User(String userId, String userName) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+	}
+
+
+
+	public User(String userId, String userName, Date userBirthday, Double userSalary) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userBirthday = userBirthday;
+		this.userSalary = userSalary;
+	}
+
+	public String getUserId() {
         return userId;
     }
 
@@ -42,4 +63,11 @@ public class User {
     public void setUserSalary(Double userSalary) {
         this.userSalary = userSalary;
     }
+
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", userBirthday=" + userBirthday + ", userSalary="
+				+ userSalary + "]";
+	}
+    
+    
 }

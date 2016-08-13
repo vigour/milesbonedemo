@@ -1,11 +1,14 @@
 package com.milesbone.db;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import junit.framework.TestCase;
 
@@ -17,6 +20,8 @@ import junit.framework.TestCase;
  */
 public class JDBCTest extends TestCase{
 
+	private static final Logger logger = LoggerFactory.getLogger(JDBCTest.class);
+	
 	@Test
 	public void testJdbc () throws  Exception{
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -35,5 +40,31 @@ public class JDBCTest extends TestCase{
         }
         conn.close();
 		
+	}
+	
+	
+	@Test
+	public void testLogger(){
+		String a ="";
+		logger.info("ceshi :{}", a);
+		for(int i = 0; i <=5; i++){
+			if(i==5){
+				throw new RuntimeException("yuxsasadasdasda*");
+			}
+		}
+		
+		logger.info("finish");
+	}
+	
+	public static void main(String[] args) throws IOException {
+		String a ="";
+		logger.info("ceshi :{}", a);
+		for(int i = 0; i <=5; i++){
+			if(i==5){
+				throw new RuntimeException("yuxsasadasdasda*");
+			}
+		}
+		
+		logger.info("finish");
 	}
 }

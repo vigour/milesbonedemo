@@ -22,6 +22,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,6 +49,7 @@ public class HttpLoginTest implements Runnable {
 	
 	static{
 		
+		list.add(new UserInfo("hdzx", "888888"));
 		list.add(new UserInfo("hdyf", "888888"));
 		list.add(new UserInfo("hdyf001", "888888"));
 		list.add(new UserInfo("hdyf002", "888888"));
@@ -166,7 +168,7 @@ public class HttpLoginTest implements Runnable {
 			    post = new HttpPost("http://127.0.0.1:8090"+newuri);
 			    post.setEntity(new UrlEncodedFormEntity(params));
 			    response = httpClient.execute(post);
-			    logger.error("执行后的状态码:{}", response.getStatusLine().getStatusCode());
+			    logger.info("执行后的状态码:{}", response.getStatusLine().getStatusCode());
 			}  
 			System.out.println("返回消息:{}" + response.toString());
 		}catch (UnsupportedEncodingException e) {
@@ -187,6 +189,10 @@ public class HttpLoginTest implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
+		
 		homePost.releaseConnection();
 		logger.info("登录Action结束,线程id: {},name:{}", this.id,this.name);
 		
@@ -199,15 +205,21 @@ public class HttpLoginTest implements Runnable {
 	}
 
 	public static void main(String[] args) {
-//		new HttpLoginTest(0).run();
+//		new HttpLoginTest(1).run();
 
 		 ExecutorService service = Executors.newFixedThreadPool(500);
-		 for (int i = 0; i < 500; i++) {
+		 for (int i = 0; i < 1; i++) {
+			 service.execute(new HttpLoginTest("theadName"+i,i%33));// 并发50个用户
+		 }
+		 
+		 for (int i = 0; i < 1000; i++) {
 			 service.execute(new HttpLoginTest("theadName"+i,i%33));// 并发50个用户
 		 }
 		 service.shutdown();
 		 logger.info("i={},execute finish");
 //		deleteDir(directory, false);
 	}
+	
+	
 
 }
