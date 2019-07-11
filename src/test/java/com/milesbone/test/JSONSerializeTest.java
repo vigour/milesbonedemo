@@ -1,11 +1,15 @@
 package com.milesbone.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.json.simple.JSONObject;
+//import org.json.simple.JSONObject;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import junit.framework.TestCase;
 
@@ -32,5 +36,39 @@ public class JSONSerializeTest extends TestCase{
 			System.out.println("------------");
 		}
 		
+	}
+	
+	
+	
+	@Test
+	public void testJsonArray() {
+		JSONArray ja = new JSONArray();
+		JSONArray result = new JSONArray();
+		Map<String, Long> map = new HashMap<String, Long>();
+		map.put("1_1", 1L);
+		map.put("1_4", 1L);
+		JSONObject jo = null;
+		for(int i=0; i<10; i++) {
+			jo = new JSONObject();
+			jo.put("task_id", "1_"+i);
+			jo.put("taskVal", "test"+i);
+			jo.put("task", "testtask"+i);
+			ja.add(jo);
+		}
+		String taskId = null;
+		for(int j=0;j<ja.size();j++) {
+			jo = (JSONObject) ja.get(j);
+			taskId = jo.getString("task_id");
+			if(map.containsKey(taskId)) {
+				System.out.println("contain key:" + taskId + ", j="+j);
+				continue;
+//				ja.remove(j);
+//				System.out.println("------------");
+//				System.out.println(ja);
+//				System.out.println("------------");
+			}
+			result.add(jo);
+		}
+		System.out.println(result.toJSONString());
 	}
 }
