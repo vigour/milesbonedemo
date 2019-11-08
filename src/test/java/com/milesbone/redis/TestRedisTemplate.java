@@ -3,6 +3,7 @@ package com.milesbone.redis;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.ClusterOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.ContextConfiguration;
@@ -78,5 +79,19 @@ public class TestRedisTemplate {
         operations.getAndSet("name",  jo);
         name1 = operations.get("name");
         System.out.println("修改json后："+name1);
+        
+        
+        ValueOperations<String, Object>  cop = redisTemplate.opsForValue();
+        cop.increment("aaa1", 1);
+        
+        cop.increment("aaa1", 1);
+        name1 = operations.get("aaa1");
+        System.out.println("修aaa1后："+name1);
+        cop.getAndSet("aaa1", 0);
+        name1 = operations.get("aaa1");
+        System.out.println("reset aaa1后："+name1);
+        cop.increment("aaa1", 1);
+        name1 = operations.get("aaa1");
+        System.out.println("修aaa1后："+name1);
 	}
 }

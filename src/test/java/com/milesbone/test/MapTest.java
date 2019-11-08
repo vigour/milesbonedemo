@@ -15,6 +15,23 @@ import com.google.common.collect.Sets.SetView;
 public class MapTest {
 
 	
+	public static final Map<String, Integer> SITE_MAP = new HashMap<String, Integer>(){
+		/**
+		 * @Fields serialVersionUID : TODO
+		 */
+		private static final long serialVersionUID = 57692347792316157L;
+
+		{
+			put("IQIYI",0);
+			put("ALI",100);
+//			put("BESTV",2);
+			put("BESTV1",21);
+			put("BESTV2",22);
+			put("BESTV3",2);
+			put("BESTV4",null);
+		}
+	};
+	
 	public static void main(String[] args) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("A_12313", "123123");
@@ -22,6 +39,11 @@ public class MapTest {
 		map.put("C_789", "789");
 		map.put("D_123313", "D_123313");
 		System.out.println(map.containsKey("A_"));
+	}
+	
+	@Test
+	public void testMapContain() {
+		System.out.println(SITE_MAP.containsValue(-1));
 	}
 	
 	

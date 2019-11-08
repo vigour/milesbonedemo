@@ -8,12 +8,30 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.junit.Test;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.AtomicLongMap;
 
 public class GuavaTest {
+	
+	@Test
+	public void testITerator() {
+		String source = "1,2,3,45,5555.dsd,6,1,123123,";
+		
+		
+		int frequencys = Iterables.frequency(Splitter.on(",").trimResults().splitToList(source),"1");
+		System.out.println(frequencys);
+		int frequency = Iterables.frequency(Lists.newArrayList("abc","bc","ab","abc","bcd","bce","abc","abc", "def","ABC"),"abc");
+		System.out.println(frequency);
+		
+	}
+	
+	
 	
 	
 	@Test

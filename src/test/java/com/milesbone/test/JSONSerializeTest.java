@@ -1,6 +1,7 @@
 package com.milesbone.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.Map;
 //import org.json.simple.JSONObject;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -36,6 +38,19 @@ public class JSONSerializeTest extends TestCase{
 			System.out.println("------------");
 		}
 		
+	}
+	@Test
+	public void testListJson1() {
+		List<String> list = new ArrayList<String>();
+		JSONObject obj;
+		for(int i= 0; i<3;i++) {
+			list.add("test"+i);
+		}
+		obj = new JSONObject();
+		obj.put("test", list);
+		System.out.println("------------");
+		System.out.println(JSON.toJSONString(obj.get("test")));
+		System.out.println("------------");
 	}
 	
 	
