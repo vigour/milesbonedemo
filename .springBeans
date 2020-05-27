@@ -18,6 +18,8 @@
 		<config>src/main/resources/config/spring/spring-listener.xml</config>
 		<config>src/main/resources/config/spring/spring-security.xml</config>
 		<config>src/test/resources/config/spring/spring-redis.xml</config>
+		<config>src/main/resources/config/spring/spring-rpc-server.xml</config>
+		<config>src/main/resources/config/spring/spring-rpc-client.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

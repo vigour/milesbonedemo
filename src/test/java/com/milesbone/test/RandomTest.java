@@ -20,4 +20,17 @@ public class RandomTest {
 		for(int i = 0; i < 10; i++)
 		System.out.println(random.nextBoolean());
 	}
+	
+	@Test
+	public void testNum(){
+		System.out.println(Runtime.getRuntime().availableProcessors());
+		System.out.println(Runtime.getRuntime().availableProcessors()>>1);
+		System.out.println(Runtime.getRuntime().availableProcessors()<<1);
+	}
+	
+	@Test
+	public void testShortNum(){
+		System.out.println(0xbabe);
+	}
+	
 }

@@ -25,7 +25,7 @@ public class JDBCTest extends TestCase{
 	@Test
 	public void testJdbc () throws  Exception{
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-        String url="jdbc:mysql://localhost:3306/mydrp?useUnicode=true&characterEncoding=UTF-8"; 
+        String url="jdbc:mysql://192.168.4.128:3306/mydrp?useUnicode=true&characterEncoding=UTF-8"; 
         String user="logistics"; 
         String password="logistics"; 
         System.out.println("try");

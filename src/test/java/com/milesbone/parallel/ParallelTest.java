@@ -18,6 +18,7 @@ public class ParallelTest {
 	
 	@Test
 	public void testParallel(){
+		@SuppressWarnings("rawtypes")
 		Class[] cls = { MapTest.class, RandomTest.class };
 
         Result rt;
@@ -37,7 +38,8 @@ public class ParallelTest {
 	
 	
 	public static void main(String[] args) {
-        Class[] cls = { MapTest.class, RandomTest.class };
+        @SuppressWarnings("rawtypes")
+		Class[] cls = { MapTest.class, RandomTest.class };
 
         Result rt;
 

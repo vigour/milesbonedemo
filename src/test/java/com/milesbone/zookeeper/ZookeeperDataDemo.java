@@ -25,7 +25,8 @@ public class ZookeeperDataDemo implements Watcher {
 	private static final Logger logger = LoggerFactory.getLogger(ZookeeperDataDemo.class);
 
 	private static CountDownLatch connectSignal = new CountDownLatch(1);
-	private static final String CONNECT_STRING = "192.168.4.128:2181,192.168.4.128:2182,192.168.4.128:2183";
+//	private static final String CONNECT_STRING = "192.168.4.128:2181,192.168.4.128:2182,192.168.4.128:2183";
+	private static final String CONNECT_STRING = "192.168.4.128:22181";
 	private static final int DEFAULT_SESSION_TIMEOUT = 5000;
 
 	private static ZooKeeper client;
@@ -59,7 +60,7 @@ public class ZookeeperDataDemo implements Watcher {
 		// 创建节点"/simple/acl-test"
 		String path = null;
 		try {
-			path = client.create("/acl-test2", "/acl-test2".getBytes(), Ids.CREATOR_ALL_ACL, CreateMode.PERSISTENT);
+			path = client.create("/LeaderElection", "/LeaderElection".getBytes(), Ids.CREATOR_ALL_ACL, CreateMode.PERSISTENT);
 		} catch (KeeperException | InterruptedException e1) {
 			logger.error("创建节点失败");
 			e1.printStackTrace();

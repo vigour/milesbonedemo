@@ -108,7 +108,8 @@ public class ZooKeeperClientTest {
 	@Test
 	public void testConnect() throws InterruptedException, IOException {
 		// 连接到ZK服务，多个可以用逗号分割写
-		zk = new ZooKeeper("192.168.4.128:2181,192.168.4.128:2182,192.168.4.128:2183",
+		zk = new ZooKeeper("10.1.2.1:2181,10.1.2.3:2181,10.1.2.2:2181",
+//				zk = new ZooKeeper("192.168.4.128:2181,192.168.4.128:2182,192.168.4.128:2183",
 				ZooKeeperClientTest.SESSION_TIMEOUT, this.wh);
 		if(!zk.getState().equals(States.CONNECTED)){
             while(true){

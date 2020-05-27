@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ import com.milesbone.account.service.IUserService;
 
 @Controller
 public class LoginController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	private IUserService userservice;
 	
@@ -33,6 +37,7 @@ public class LoginController {
 				+ "<h3>********** Hello World, Spring MVC Tutorial</h3>This message is coming from UserController.java **********</div><br><br>";
 		model.addAttribute("message", message);
 		List<User> users = this.userservice.getAllUser();
+		logger.info(users.get(0).toString());
 		model.addAttribute("users", users);
 		return new ModelAndView("userlogin");
 	}

@@ -13,14 +13,12 @@ import java.util.UUID;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
-import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -42,17 +40,19 @@ public class HttpLoginWithKapatchTest implements Runnable {
 	
 	private static final String LOGIN_URL = "http://127.0.0.1:8090/windforce/j_spring_security_check";
 	
-	private static final String WELCOME_URL = "http://127.0.0.1:8090/windforce/login.action";
-	
-	private static final String HOME_STATISTIC_URL = "http://127.0.0.1:8090/windforce/hpCache_homePageFlowStatistics.action";
-	
-	private static CookieStore cookieStore = null;
-	 
-	private static HttpClientContext context = null;
+//	private static final String WELCOME_URL = "http://127.0.0.1:8090/windforce/login.action";
+//	
+//	private static final String HOME_STATISTIC_URL = "http://127.0.0.1:8090/windforce/hpCache_homePageFlowStatistics.action";
+//	
+//	private static CookieStore cookieStore = null;
+//	 
+//	private static HttpClientContext context = null;
 
 	private static final String PIC_PATH = System.getProperty("user.dir") + File.separator + "pic";
 
 	public static final List<UserInfo> list = Collections.synchronizedList(new ArrayList<UserInfo>());
+
+	public int l;
 	
 	static{
 		
@@ -128,7 +128,7 @@ public class HttpLoginWithKapatchTest implements Runnable {
 
 			in = entity.getContent();
 			fout = new FileOutputStream(destFile);
-			int l = -1;
+			l = -1;
 			byte[] tmp = new byte[2048];
 			while ((l = in.read(tmp)) != -1) {
 				fout.write(tmp);

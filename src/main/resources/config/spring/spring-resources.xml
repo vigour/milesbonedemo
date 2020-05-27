@@ -13,11 +13,13 @@
            <list>  
               <!-- 这里支持多种寻址方式：classpath和file -->  
               <value>classpath:config/db/jdbc.properties</value>  
+              <value>classpath:config/rpc/rpcServer.properties</value>  
               <!-- 推荐使用file的方式引入，这样可以将配置和代码分离 -->  
 <!--               <value>file:/opt/demo/config/demo-mq.properties</value>   -->
 <!--               <value>file:/opt/demo/config/demo-remote.properties</value>   -->
             </list>  
-        </property>  
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"></property>  
     </bean>  
 
 </beans>

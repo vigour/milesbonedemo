@@ -27,7 +27,7 @@ public class KeyExpiresMessageListener implements MessageListener{
 	/**
 	 * 最大sleep时间
 	 */
-	private static final int MAX_SLEEP_TIME = 60000;
+//	private static final int MAX_SLEEP_TIME = 60000;
 	
 	private static final String CONNECT_STRING = "192.168.4.128:2181,192.168.4.128:2182,192.168.4.128:2183";
 	private static final int SESSION_TIMEOUT = 5000;
