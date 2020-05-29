@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.9.4.201804120850-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[3.9.10.201909171046-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -29,6 +29,8 @@
 		<config>src/test/resources/config/spring/spring-service.xml</config>
 		<config>src/test/resources/config/spring/spring.xml</config>
 		<config>src/test/resources/config/spring/spring-redis-cluster.xml</config>
+		<config>src/main/resources/config/spring/spring-rpc-server.xml</config>
+		<config>src/main/resources/config/spring/spring-rpc-client.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
