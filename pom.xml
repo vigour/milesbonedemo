@@ -64,7 +64,7 @@
 		<kryo.version>2.21</kryo.version>
 
 		<!-- netty4.0 -->
-		<netty.version>4.0.50.Final</netty.version>
+		<netty.version>4.1.42.Final</netty.version>
 
 		<objenesis.version>2.5.1</objenesis.version>
 
