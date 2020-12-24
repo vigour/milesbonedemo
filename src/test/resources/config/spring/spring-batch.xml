@@ -16,35 +16,35 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-	<bean id="jobRegistry" class="org.springframework.batch.core.configuration.support.MapJobRegistry"/>
+<!-- 	<bean id="jobRegistry" class="org.springframework.batch.core.configuration.support.MapJobRegistry"/> -->
 	
-	<bean class="org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor">
-		<property name="jobRegistry" ref="jobRegistry" />
-	</bean>
-	<bean id="jobExplorer" class="org.springframework.batch.core.explore.support.JobExplorerFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
+<!-- 	<bean class="org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor"> -->
+<!-- 		<property name="jobRegistry" ref="jobRegistry" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="jobExplorer" class="org.springframework.batch.core.explore.support.JobExplorerFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource"/> -->
+<!-- 	</bean> -->
 	
-	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher"/>
+<!-- 	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher"/> -->
 	
-	<batch:job-repository 
-		id="jobRepository" 
-		data-source="dataSource" 
-		transaction-manager="transactionManager" 
-		isolation-level-for-create="SERIALIZABLE" 
-		table-prefix="BATCH_"
-		max-varchar-length="1000"
-		/>
-	<bean id="jobOpertator" class="org.springframework.batch.core.launch.support.SimpleJobOperator">
-		<property name="jobRegistry" ref="jobRegistry"></property>
-		<property name="jobLauncher" ref="jobLauncher"></property>
-		<property name="jobExplorer" ref="jobExplorer"></property>
-		<property name="jobRepository" ref="jobRepository"></property>
-	</bean>
+<!-- 	<batch:job-repository  -->
+<!-- 		id="jobRepository"  -->
+<!-- 		data-source="dataSource"  -->
+<!-- 		transaction-manager="transactionManager"  -->
+<!-- 		isolation-level-for-create="SERIALIZABLE"  -->
+<!-- 		table-prefix="BATCH_" -->
+<!-- 		max-varchar-length="1000" -->
+<!-- 		/> -->
+<!-- 	<bean id="jobOpertator" class="org.springframework.batch.core.launch.support.SimpleJobOperator"> -->
+<!-- 		<property name="jobRegistry" ref="jobRegistry"></property> -->
+<!-- 		<property name="jobLauncher" ref="jobLauncher"></property> -->
+<!-- 		<property name="jobExplorer" ref="jobExplorer"></property> -->
+<!-- 		<property name="jobRepository" ref="jobRepository"></property> -->
+<!-- 	</bean> -->
 	
 	
-	<jdbc:initialize-database data-source="dataSource">
-		<jdbc:script location="org/springframework/batch/core/schema-drop-mysql.sql" />
-		<jdbc:script location="org/springframework/batch/core/schema-mysql.sql" />
-	</jdbc:initialize-database>
+<!-- 	<jdbc:initialize-database data-source="dataSource"> -->
+<!-- 		<jdbc:script location="org/springframework/batch/core/schema-drop-mysql.sql" /> -->
+<!-- 		<jdbc:script location="org/springframework/batch/core/schema-mysql.sql" /> -->
+<!-- 	</jdbc:initialize-database> -->
 </beans>

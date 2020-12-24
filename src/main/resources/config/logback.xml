@@ -13,15 +13,11 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<logger name="org.apache" level="INFO" additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-
 	<logger name="com.milesbone" level="TRACE" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<root level="INFO">
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLHandshakeException;
+
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -208,7 +211,7 @@ public class HttpProvider {
 	 * @param httpost
 	 * @param params
 	 */
-	public static void setPostParams(HttpPost httpost, Map<String, Object> params) {
+	private static void setPostParams(HttpPost httpost, Map<String, Object> params) {
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		Set<String> keySet = params.keySet();
 		for (String key : keySet) {

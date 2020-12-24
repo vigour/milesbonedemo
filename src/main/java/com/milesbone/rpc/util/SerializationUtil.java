@@ -6,15 +6,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
 
-import io.protostuff.LinkedBuffer;
-import io.protostuff.ProtostuffIOUtil;
-import io.protostuff.Schema;
-import io.protostuff.runtime.RuntimeSchema;
-
-//import com.dyuproject.protostuff.LinkedBuffer;
-//import com.dyuproject.protostuff.ProtostuffIOUtil;
-//import com.dyuproject.protostuff.Schema;
-//import com.dyuproject.protostuff.runtime.RuntimeSchema;
+import com.dyuproject.protostuff.LinkedBuffer;
+import com.dyuproject.protostuff.ProtostuffIOUtil;
+import com.dyuproject.protostuff.Schema;
+import com.dyuproject.protostuff.runtime.RuntimeSchema;
 
 public class SerializationUtil {
 
@@ -58,7 +53,7 @@ public class SerializationUtil {
 	
 	public static <T> T deserialize(byte[] data, Class<T> cls){
 		try {
-			T message = objenesis.newInstance(cls);
+			T message = (T) objenesis.newInstance(cls);
 			Schema<T> schema = getSchema(cls);
 			ProtostuffIOUtil.mergeFrom(data, message, schema);
 			return message;

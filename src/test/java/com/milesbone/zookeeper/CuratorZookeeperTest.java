@@ -107,7 +107,6 @@ public class CuratorZookeeperTest {
 		logger.info("success create path:" + path);
 		
 		//2.添加监听器
-		@SuppressWarnings("resource")
 		final NodeCache nodeCache = new NodeCache(client, path);
 		nodeCache.getListenable().addListener(new NodeCacheListener() {
 			

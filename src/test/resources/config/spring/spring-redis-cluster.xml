@@ -81,25 +81,60 @@
     </bean>
 
     <!--redisTemplate-->
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
-        <property name="connectionFactory" ref="jedisConnectionFactory"/>
-        <property name="defaultSerializer"  >
-			<bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/>
+<!--     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"> -->
+<!--         <property name="connectionFactory" ref="jedisConnectionFactory"/> -->
+<!--         <property name="defaultSerializer"  > -->
+<!-- 			<bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/> -->
+<!-- 		</property> -->
+<!--         <property name="enableDefaultSerializer" value="true"></property> -->
+<!--     </bean> -->
+
+	<!-- 配置LettuceConnectionFactory -->
+	<bean id="lettuceConnectionFactory" class="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory">
+		<constructor-arg name="clusterConfiguration" ref="redisClusterConfiguration" />
+	</bean>
+
+<!--redisTemplate-->
+	<bean id="redisTemplate"
+		class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory"
+			ref="lettuceConnectionFactory" />
+		<property name="enableTransactionSupport" value="false"></property>
+		<property name="defaultSerializer"  >
+			<bean class="com.milesbone.tool.SimpleJson2JsonRedisSerializer"/>
 		</property>
-        <property name="enableDefaultSerializer" value="true"></property>
-    </bean>
-	<bean id="redisCacheManager"
-	        class="org.springframework.data.redis.cache.RedisCacheManager"
-	        c:redisOperations-ref="redisTemplate"
-	        p:usePrefix="true" >
-	    <property name="cacheNames">
-	      <list>
-	        <value>testCache</value>
-	      </list>
-	    </property>
-	    <property name="cachePrefix">
-	      <bean class="org.springframework.data.redis.cache.DefaultRedisCachePrefix"/>
-	    </property>
-	  </bean>
+		<property name="keySerializer">
+			<bean
+				class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<property name="hashKeySerializer">
+			<bean
+				class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+<!-- 		<property name="hashValueSerializer"> -->
+<!-- 			<bean -->
+<!-- 				class="org.springframework.data.redis.serializer.StringRedisSerializer" /> -->
+<!-- 		</property> -->
+	</bean>
+<!--      <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"> -->
+<!--         <property name="connectionFactory" ref="jedisConnectionFactory"/> -->
+<!--         <property name="defaultSerializer"  > -->
+<!-- 			<bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/> -->
+<!-- 		</property> -->
+<!--         <property name="enableDefaultSerializer" value="true"></property> -->
+<!--     </bean> -->
+<!-- 	<bean id="redisCacheManager" -->
+<!-- 	        class="org.springframework.data.redis.cache.RedisCacheManager" -->
+<!-- 	        c:redisOperations-ref="redisTemplate" -->
+<!-- 	        p:usePrefix="true" > -->
+<!-- 	    <property name="cacheNames"> -->
+<!-- 	      <list> -->
+<!-- 	        <value>testCache</value> -->
+<!-- 	      </list> -->
+<!-- 	    </property> -->
+<!-- 	    <property name="cachePrefix"> -->
+<!-- 	      <bean class="org.springframework.data.redis.cache.DefaultRedisCachePrefix"/> -->
+<!-- 	    </property> -->
+<!-- 	  </bean> -->
 
 </beans>

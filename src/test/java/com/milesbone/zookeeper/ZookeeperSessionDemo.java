@@ -2,6 +2,7 @@ package com.milesbone.zookeeper;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.AsyncCallback;
@@ -73,7 +74,7 @@ public class ZookeeperSessionDemo implements Watcher {
 			logger.info("first connected session id:" + sessionId);
 				
 			//使用错误的sesssionId
-//			ZooKeeper clientWithWrongSessionId = new ZooKeeper(CONNECT_STRING, DEFAULT_SESSION_TIMEOUT, new ZookeeperSessionDemo(), new Random().nextLong(), sessionPasswd);
+			ZooKeeper clientWithWrongSessionId = new ZooKeeper(CONNECT_STRING, DEFAULT_SESSION_TIMEOUT, new ZookeeperSessionDemo(), new Random().nextLong(), sessionPasswd);
 				
 			//使用正确的sessionId以及sessionPasswd
 			client = new ZooKeeper(CONNECT_STRING, DEFAULT_SESSION_TIMEOUT, new ZookeeperSessionDemo(), sessionId, sessionPasswd);

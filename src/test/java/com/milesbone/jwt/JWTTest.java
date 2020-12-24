@@ -21,7 +21,6 @@ public class JWTTest {
 		System.out.println("新生成的token是：" + token+"\n马上将该token进行校验");
 		Map<String, Object> resultMap = Jwt.validToken(token);
 		System.out.println("校验结果是:" + getResult((String)resultMap.get("state")) );
-		@SuppressWarnings("unchecked")
 		HashMap<String,String> dataobj =  (HashMap<String,String>) resultMap.get("data");
 		System.out.println("从token中取出的payload数据是：" +dataobj.toString());
 

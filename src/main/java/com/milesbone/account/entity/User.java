@@ -2,18 +2,11 @@ package com.milesbone.account.entity;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-
 public class User {
     private String userId;
 
     private String userName;
 
-    
     private Date userBirthday;
 
     private Double userSalary;
@@ -54,8 +47,7 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
     }
-    
-    @JSONField(format = "yyyy-MM-dd")  
+
     public Date getUserBirthday() {
         return userBirthday;
     }
@@ -73,7 +65,9 @@ public class User {
     }
 
 	public String toString() {
-		return JSON.toJSONString(this);
+		return "User [userId=" + userId + ", userName=" + userName + ", userBirthday=" + userBirthday + ", userSalary="
+				+ userSalary + "]";
 	}
+    
     
 }

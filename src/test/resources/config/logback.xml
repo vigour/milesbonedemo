@@ -12,14 +12,12 @@
 	<logger name="org.springframework" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
- 	<logger name="org.apache" level="INFO">
- 		<appender-ref ref="STDOUT"/>
- 	</logger>
-	<logger name="com.sinoway" level="INFO" additivity="false">
+
+	<logger name="com.sinoway" level="TRACE" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<root level="INFO">
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>

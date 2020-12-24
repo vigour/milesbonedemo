@@ -1,5 +1,7 @@
 package com.milesbone.redis;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,96 @@ import com.alibaba.fastjson.JSONObject;
 @ContextConfiguration("classpath:config/spring/spring-redis-cluster.xml")
 public class TestRedisClusterTemplate {
 	
+	/**
+	 * 花絮缓存名称
+	 */
+	public static final String CACHE_NAME_VIDEO_FEATURE_PREFIX = "cachevideofeature";
+
+	/**
+	 * 缓存影片属性名称
+	 */
+	public static final String CACHE_NAME_PROPERTY_PREFIX = "cacheproperty" ;
+	
+	
+	/**
+	 * 缓存列表属性名称
+	 */
+	public static final String CACHE_NAME_VIDEO_LIST_PREFIX = "cachevideolist" ;
+	
+	/**
+	 * 缓存影片库里所有的影片集合
+	 */
+	public static final String CACHE_NAME_SITE_VIDEO_LIST_PREFIX = "cachesitevideolist" ;
+	
+	/**
+	 * 缓存影片库里所有的影片集合
+	 */
+	public static final String CACHE_NAME_SITE_VIP_VIDEO_LIST_PREFIX = "cachesitevipvideolist" ;
+	
+	/**
+	 * 
+	 */
+	public static final String CACHE_NAME_SITE_VIP_VIDEO_LIST_PARTTERN = "cachesitevipvideolist:*_412";
+	
+	
+	/**
+	 * 缓存影片详情名称
+	 */
+	public static final String CACHE_NAME_VIDEO_INFO_PREFIX = "cachevideoinfo";
+	
+	/**
+	 * 缓存影片详情名称
+	 */
+	public static final String CACHE_NAME_VIDEO_ALBUM_PREFIX = "cachevideoalbum";
+	
+	/**
+	 * 影片评论缓存名称
+	 */
+	public static final String CACHE_NAME_VIDEO_COMMENT_PREFIX = "cachevideocomment";
+	
+	/**
+	 * 集数列表缓存名称
+	 */
+	public static final String CACHE_NAME_VOLUME_LIST_PREFIX = "cachevolume";
+	
+	/**
+	 * 分集剧情缓存名称
+	 */
+	public static final String CACHE_NAME_VOLUME_STORIES_PREFIX = "cachevolumestorys";
+	
+	
+	/**
+	 * redis缓存名称分隔符
+	 */
+	public static final String REDIS_CHAR_KEY  = ":";
+	
+	/**
+	 * rediskey分隔符
+	 */
+	private static final String KEY_SPLIT_CHAR = "_";
+	
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate;
 
 	@Test
 	public void test() {
 		System.out.println(redisTemplate);
+	}
+	@Test
+	public void testSetValue() {
+		ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+		operations.set("name",  "test", 300L, TimeUnit.SECONDS);
+		System.out.println("done");
+	}
+	@Test
+	public void testValue() {
+		ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+		System.out.println(redisTemplate.hasKey("name"));
+        //根据key取出Value
+        Object name = operations.get("name");
+        System.out.println("name:"+name);
+//		String s = (String) redisTemplate.opsForValue().get(CACHE_NAME_PROPERTY_PREFIX +REDIS_CHAR_KEY+ "763365501F5F21");
+//		System.out.println(s);
 	}
 	
 	@Test

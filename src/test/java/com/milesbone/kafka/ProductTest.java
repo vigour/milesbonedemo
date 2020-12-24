@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
-import java.util.UUID;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -20,7 +19,7 @@ public class ProductTest {
 	@Test
 	public void sendProducerMsg(){
 		Properties props = new Properties();
-		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.4.128:39092,192.168.4.128:39093,192.168.4.128:39094");
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.4.128:19092");
 		props.put(ProducerConfig.ACKS_CONFIG, "all");
 		props.put(ProducerConfig.RETRIES_CONFIG, 0);
 		props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384);
@@ -31,7 +30,7 @@ public class ProductTest {
 
 		KafkaProducer<String, String> producer = new KafkaProducer<String, String>(props);
 		try {
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < 10; i++) {
 				// ProducerRecord<K, V>
 				// K对应Partition Key的类型
 				// V对应消息本身的类型
@@ -41,8 +40,8 @@ public class ProductTest {
 				String curTime = formatter.format(curDate);
 
 				String msg = "milesbone send message:" + i + "=" + curTime;
-				String key = UUID.randomUUID().toString();
-				producer.send(new ProducerRecord<String, String>("test-replicated-topic", msg));
+				String key = new Random().nextLong()+"";
+				producer.send(new ProducerRecord<String, String>("singletest", key, msg));
 				logger.info("producer send message :{}", msg);
 			}
 		} catch (Exception e) {

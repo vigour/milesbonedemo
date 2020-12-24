@@ -1,8 +1,12 @@
 package com.milesbone.jwt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 public class JsonWebTokenTest {
 
-//	private static final Logger logger = LoggerFactory.getLogger(JsonWebTokenTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(JsonWebTokenTest.class);
 	
 //	private static String createJWT(String id, String issuer, String subject, long ttlMillis){
 //		SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS512;

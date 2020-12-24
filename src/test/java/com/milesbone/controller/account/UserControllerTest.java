@@ -14,7 +14,7 @@ public class UserControllerTest extends AbstractControllerTestCase {
 	@Test
 	public void userlogin() throws Exception {
 
-		this.mockMvc.perform(get("/"))
+		this.mockMvc.perform(get("/userlogin"))
 				.andExpect(status().isOk()).andExpect(view().name("userlogin"));
 	}
 }

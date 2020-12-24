@@ -1,13 +1,14 @@
 package com.milesbone.rpc.client;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.UUID;
+
 
 import com.milesbone.rpc.common.RpcRequest;
 import com.milesbone.rpc.common.RpcResponse;
 
-import net.sf.cglib.proxy.InvocationHandler;
-import net.sf.cglib.proxy.Proxy;
 
 public class RpcProxy {
 
@@ -32,6 +33,7 @@ public class RpcProxy {
 		this.serviceDiscovery = serviceDiscovery;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public <T> T create(Class<?> interfaceClass){
 		return (T) Proxy.newProxyInstance(
 				interfaceClass.getClassLoader(), 
