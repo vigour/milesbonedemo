@@ -20,7 +20,7 @@
 		<jsp-api.version>2.2</jsp-api.version>
 		<logback.version>1.0.13</logback.version>
 		<!-- spring版本号 -->
-		<spring.version>5.1.5.RELEASE</spring.version>
+		<spring.version>5.3.2</spring.version>
 		<spring.security.version>4.1.0.RELEASE</spring.security.version>
 		<spring.session.version>1.1.1.RELEASE</spring.session.version>
 		<spring.session.redis.version>2.1.5.RELEASE</spring.session.redis.version>
