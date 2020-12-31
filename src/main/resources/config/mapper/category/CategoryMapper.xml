@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.milesbone.category.dao.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.milesbone.category.entity.Category">
+    <id column="fsk_id" jdbcType="INTEGER" property="fskId" />
+    <result column="fsk_site" jdbcType="VARCHAR" property="fskSite" />
+    <result column="fsk_site_name" jdbcType="VARCHAR" property="fskSiteName" />
+    <result column="fsk_cid" jdbcType="INTEGER" property="fskCid" />
+    <result column="fsk_cname" jdbcType="VARCHAR" property="fskCname" />
+    <result column="fsk_category_name" jdbcType="VARCHAR" property="fskCategoryName" />
+    <result column="fsk_category_code" jdbcType="VARCHAR" property="fskCategoryCode" />
+    <result column="fsk_states" jdbcType="VARCHAR" property="fskStates" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    fsk_id, fsk_site, fsk_site_name, fsk_cid, fsk_cname, fsk_category_name, fsk_category_code, 
+    fsk_states
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fsk_category
+    where fsk_id = #{fskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fsk_category
+    where fsk_id = #{fskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.milesbone.category.entity.Category">
+    insert into fsk_category (fsk_id, fsk_site, fsk_site_name, 
+      fsk_cid, fsk_cname, fsk_category_name, 
+      fsk_category_code, fsk_states)
+    values (#{fskId,jdbcType=INTEGER}, #{fskSite,jdbcType=VARCHAR}, #{fskSiteName,jdbcType=VARCHAR}, 
+      #{fskCid,jdbcType=INTEGER}, #{fskCname,jdbcType=VARCHAR}, #{fskCategoryName,jdbcType=VARCHAR}, 
+      #{fskCategoryCode,jdbcType=VARCHAR}, #{fskStates,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.milesbone.category.entity.Category">
+    insert into fsk_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fskId != null">
+        fsk_id,
+      </if>
+      <if test="fskSite != null">
+        fsk_site,
+      </if>
+      <if test="fskSiteName != null">
+        fsk_site_name,
+      </if>
+      <if test="fskCid != null">
+        fsk_cid,
+      </if>
+      <if test="fskCname != null">
+        fsk_cname,
+      </if>
+      <if test="fskCategoryName != null">
+        fsk_category_name,
+      </if>
+      <if test="fskCategoryCode != null">
+        fsk_category_code,
+      </if>
+      <if test="fskStates != null">
+        fsk_states,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fskId != null">
+        #{fskId,jdbcType=INTEGER},
+      </if>
+      <if test="fskSite != null">
+        #{fskSite,jdbcType=VARCHAR},
+      </if>
+      <if test="fskSiteName != null">
+        #{fskSiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="fskCid != null">
+        #{fskCid,jdbcType=INTEGER},
+      </if>
+      <if test="fskCname != null">
+        #{fskCname,jdbcType=VARCHAR},
+      </if>
+      <if test="fskCategoryName != null">
+        #{fskCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="fskCategoryCode != null">
+        #{fskCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fskStates != null">
+        #{fskStates,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.milesbone.category.entity.Category">
+    update fsk_category
+    <set>
+      <if test="fskSite != null">
+        fsk_site = #{fskSite,jdbcType=VARCHAR},
+      </if>
+      <if test="fskSiteName != null">
+        fsk_site_name = #{fskSiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="fskCid != null">
+        fsk_cid = #{fskCid,jdbcType=INTEGER},
+      </if>
+      <if test="fskCname != null">
+        fsk_cname = #{fskCname,jdbcType=VARCHAR},
+      </if>
+      <if test="fskCategoryName != null">
+        fsk_category_name = #{fskCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="fskCategoryCode != null">
+        fsk_category_code = #{fskCategoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fskStates != null">
+        fsk_states = #{fskStates,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fsk_id = #{fskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.milesbone.category.entity.Category">
+    update fsk_category
+    set fsk_site = #{fskSite,jdbcType=VARCHAR},
+      fsk_site_name = #{fskSiteName,jdbcType=VARCHAR},
+      fsk_cid = #{fskCid,jdbcType=INTEGER},
+      fsk_cname = #{fskCname,jdbcType=VARCHAR},
+      fsk_category_name = #{fskCategoryName,jdbcType=VARCHAR},
+      fsk_category_code = #{fskCategoryCode,jdbcType=VARCHAR},
+      fsk_states = #{fskStates,jdbcType=VARCHAR}
+    where fsk_id = #{fskId,jdbcType=INTEGER}
+  </update>
+</mapper>

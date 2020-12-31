@@ -25,14 +25,16 @@ public class JDBCTest extends TestCase{
 	@Test
 	public void testJdbc () throws  Exception{
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-        String url="jdbc:mysql://localhost:3306/mydrp?useUnicode=true&characterEncoding=UTF-8"; 
+        String url="jdbc:mysql://miles-db:3306/mydrp?useUnicode=true&characterEncoding=UTF-8"; 
+//        String user="javadmin"; 
         String user="logistics"; 
+//        String password="fsk_12345"; 
         String password="logistics"; 
         System.out.println("try");
         Connection conn= DriverManager.getConnection(url,user,password);
         System.out.println("Done!OK!!! ");
         
-        PreparedStatement   ps=conn.prepareStatement( "select * from   users "); 
+        PreparedStatement   ps=conn.prepareStatement( "select * from   fsk_category "); 
         ResultSet   rs=ps.executeQuery(); 
         while   (rs.next())
         { 

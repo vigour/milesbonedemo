@@ -8,11 +8,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
 	<!-- 将多个配置文件读取到容器中，交给Spring管理 -->  
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-        <property name="locations">  
+    <bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations" >  
            <list>  
               <!-- 这里支持多种寻址方式：classpath和file -->  
               <value>classpath:config/db/jdbc.properties</value>  
+<!--               <value>classpath*:config/redis/redis-cluster.properties</value> -->
+<!--               <value>classpath:config/redis/redis.properties</value> -->
               <!-- 推荐使用file的方式引入，这样可以将配置和代码分离 -->  
 <!--               <value>file:/opt/demo/config/demo-mq.properties</value>   -->
 <!--               <value>file:/opt/demo/config/demo-remote.properties</value>   -->

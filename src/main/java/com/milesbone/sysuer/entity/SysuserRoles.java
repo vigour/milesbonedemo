@@ -1,6 +1,11 @@
 package com.milesbone.sysuer.entity;
 
-public class SysuserRoles {
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.milesbone.common.entity.BaseEntity;
+
+@Document(collection="xx_sysuserroles")
+public class SysuserRoles extends BaseEntity{
     private Integer userRoleId;
 
     private String username;
