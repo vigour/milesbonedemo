@@ -77,7 +77,7 @@ public class MongoDBTest extends AbstractServiceTestCase{
 		phones.add("1234567890");
 		phones.add("1234567891");
 		phones.add("1234567892");
-		mongoTemplate.insert(new User("fa", 12, 5000.21f, new Date(), phones));
+		mongoTemplate.insert(new User("testarray", 14, 5000.21f, new Date(), phones));
 		// List<User> programmers = new ArrayList<User>();
 		// // 批量插入
 		// programmers.add(new User("xiaohong", 21, 52200.21f, new Date()));
@@ -156,6 +156,17 @@ public class MongoDBTest extends AbstractServiceTestCase{
 		Category categories = mongoTemplate.findOne(query, Category.class, "category");
 //		User one = mongoTemplate.findOne(query, User.class, "user");
 		System.out.println(categories);
+	}
+	// 条件查询
+	@Test
+	public void select1() {
+		Criteria criteria = new Criteria();
+		criteria.andOperator(where("name").is("fa"));
+		Query query = new Query(criteria);
+//		List<Category> categories = mongoTemplate.find(query, Category.class, "category");
+//		Category categories = mongoTemplate.findOne(query, Category.class, "category");
+		User one = mongoTemplate.findOne(query, User.class, "user");
+		System.out.println(one);
 	}
 
 	// 更新数据

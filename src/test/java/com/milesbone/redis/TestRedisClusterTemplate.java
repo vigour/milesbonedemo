@@ -1,5 +1,9 @@
 package com.milesbone.redis;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
@@ -14,7 +18,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:config/spring/spring-redis-cluster.xml")
+@ContextConfiguration("classpath*:config/spring/spring-redis-cluster.xml")
 public class TestRedisClusterTemplate {
 	
 	/**
@@ -153,5 +157,52 @@ public class TestRedisClusterTemplate {
         operations.getAndSet("name",  new JSONObject());
         name1 = operations.get("name");
         System.out.println("修改json后："+name1);
+	}
+	
+	@Test
+	public void testList() {
+		List<String> list = new ArrayList<String>();
+		JSONObject json = new JSONObject();
+		json.put("name","aaa");
+		json.put("age", 10);
+		json.put("msg","bbb");
+		list.add(json.toJSONString());
+		JSONObject json1 = new JSONObject();
+		json1.put("name","bbb");
+		json1.put("age", 11);
+		json1.put("msg","ccc");
+		list.add(json1.toJSONString());
+		redisTemplate.opsForValue().set("testList", list);
+	}
+	
+	@Test
+	public void testGetList() {
+		List<String> list = (List<String>) redisTemplate.opsForValue().get("testList1");
+		System.out.println(list.size());
+		System.out.println(list);
+	}
+	
+
+	@Test
+	public void testMap() {
+		Map<String,Map<String,Object>> map = new HashMap<String, Map<String,Object>>();
+		Map<String,Object> map1 = new HashMap<>();
+		map1.put("name","aaa");
+		map1.put("age", 10);
+		map1.put("msg","bbb");
+		map.put("key1", map1);
+		Map<String,Object> map2 = new HashMap<>();
+		map2.put("name","bbb");
+		map2.put("age", 11);
+		map2.put("msg","ccc");
+		map.put("key2", map2);
+		redisTemplate.opsForValue().set("testMap", map);
+	}
+	
+	@Test
+	public void testGetMap() {
+		Map<String,Map<String,Object>> map = (Map<String, Map<String, Object>>) redisTemplate.opsForValue().get("testMap1");
+		System.out.println(map.size());
+		System.out.println(map.get("key1"));
 	}
 }

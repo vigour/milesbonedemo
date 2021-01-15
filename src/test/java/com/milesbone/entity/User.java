@@ -30,7 +30,6 @@ public class User extends BaseEntity{
 	}
 
 
-
 	private String name;
 
 	private int age;
@@ -40,7 +39,7 @@ public class User extends BaseEntity{
 	private Date birthday;
 	
 	private List<String> phones;
-
+	
 	public String getName() {
 		return name;
 	}
@@ -73,6 +72,7 @@ public class User extends BaseEntity{
 		this.birthday = birthday;
 	}
 
+
 	public List<String> getPhones() {
 		return phones;
 	}
@@ -86,5 +86,4 @@ public class User extends BaseEntity{
 				+ phones + "]";
 	}
 
-	
 }

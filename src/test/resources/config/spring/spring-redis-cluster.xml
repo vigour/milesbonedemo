@@ -6,14 +6,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
  	<!--引入配置文件-->
-<!--     <bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
-<!--         <property name="ignoreUnresolvablePlaceholders" value="true"/> -->
-<!--         <property name="locations"> -->
-<!--             <list> -->
-<!--                 <value>classpath*:config/redis/redis-cluster.properties</value> -->
-<!--             </list> -->
-<!--         </property> -->
-<!--     </bean> -->
+    <bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:config/redis/redis-cluster.properties</value>
+            </list>
+        </property>
+    </bean>
 
     <!--配置 jedis pool-->
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">

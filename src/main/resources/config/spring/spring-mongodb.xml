@@ -19,7 +19,7 @@
                 socket-keep-alive="${mongo.socketKeepAlive}"
                 socket-timeout="${mongo.socketTimeout}"/>
 	</mongo:mongo-client>
-<!-- 	<mongo:repositories base-package="com.milesbone.sysuer.dao"/> -->
+	<mongo:repositories base-package="com.milesbone.*.mongodb"/>
 	<mongo:db-factory id="mongoDbFactory" dbname="${mongo.dbname}" mongo-ref="mongo"/>
 	
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate"> 
